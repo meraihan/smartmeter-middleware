@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Payment Method</title>
+    <link rel="shortcut icon" type="image/png" href="https://zpay.sslcommerz.com/zpay.ico"/>
+
+    <meta name="description" content="The first and most secure payment gateway of Bangladesh"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta name="author" content="SSLWireless"/>
+
+    <link rel="stylesheet" type="text/css" href="https://zpay.sslcommerz.com/css/sweetalert.min.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="https://zpay.sslcommerz.com/minified/css/zpay.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://zpay.sslcommerz.com/minified/css/responsive.css" />
+    <script src="https://zpay.sslcommerz.com/js/modernizr.custom.js"></script>
+
+</head>
+<body>
+<div class="preload"><img th:src="@{/images/15.gif}"/></div>
+<div id="fullpage" align="center">
+    <div class="section" id="section1" data-anchor="Methods">
+        <div class="intro">
+            <h2 class="mb-20">Payment Methods</h2>
+            <form>
+                <div>
+                    <div class="mb-5">
+                        <h4><i class="fa fa-credit-card"></i> Cards</h4>
+                        <!--<form th:action="@{/payment/payForm}">-->
+                        <!--<a th:href="@{/payment/payForm}">-->
+                        <button type="button" id="btnCard1" class="btnx btn-link-1 hvr-bounce-in">
+                            <div class="abs">
+                                <div class="emi"></div>
+                            </div>
+
+                            <img src="https://zpay.sslcommerz.com/img/cards/AMex.png" width="50" height="50" alt="Amex"/>
+                        </button>
+                        <!--</a>-->
+
+                        <!--<a th:href="@{/payment/payForm}">-->
+                        <button type="button" id="btnCard2" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/cards/DBBL.png" width="50" height="50" alt="DBBL"/>
+                        </button>
+                        <!--</a>-->
+
+                        <!--<a th:href="@{/payment/payForm}">-->
+                        <button type="button" id="btnCard3" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/cards/fast-cash.png" width="50" height="50" alt="fast-cash"/>
+                        </button>
+                        <!--</a>-->
+
+                        <!--<a th:href="@{/payment/payForm}">-->
+                        <button type="button" id="btnCard4" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/cards/Q-CAsh.png" width="50" height="50" alt="Q-Cash"/>
+                        </button>
+                        <!--</a>-->
+                        <!--</form>-->
+                    </div>
+                    <div class="mb-5">
+                        <h4><i class="fa fa-mobile"></i> Mobile Banking</h4>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in" data-dialog="somedialog">
+                            <img src="https://zpay.sslcommerz.com/img/mobile/bKash.png" width="50" height="50" alt="Visa"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/mobile/IFIC-Mobile-Banking.png" width="50" height="50" alt="Visa"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/mobile/mcash.png" width="50" height="50" alt="Master Card"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/mobile/my-cash.png" width="50" height="50" alt="American Express"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/mobile/rocket.png" width="50" height="50" alt="American Express"/>
+                        </button>
+                    </div>
+                    <div>
+                        <h4><i class="fa fa-laptop"></i> Net Banking/E-Wallet</h4>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <div class="abs">
+                                <div class="emi"></div>
+                            </div>
+
+                            <img src="https://zpay.sslcommerz.com/img/net_banking/city-touch.png" width="50" height="50" alt="city-touch"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <div class="abs">
+                                <div class="emi"></div>
+                            </div>
+
+                            <img src="https://zpay.sslcommerz.com/img/net_banking/brac.png" width="50" height="50" alt="brac"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/net_banking/bank-asia.png" width="50" height="50" alt="bank-asia"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/net_banking/islami-bank.png" width="50" height="50" alt="islami-bank"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/net_banking/mtb.png" width="50" height="50" alt="mtb"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/net_banking/AB-Direct.png" width="50" height="50" alt="AB-Direct"/>
+                        </button>
+
+                        <button type="button" class="btnx btn-link-1 hvr-bounce-in">
+                            <img src="https://zpay.sslcommerz.com/img/net_banking/payza.png" width="50" height="50" alt="payza"/>
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div><!-- /.tab-pane -->
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://zpay.sslcommerz.com/plugins/creditcard/jquery.payform.js"></script>
+<script src="https://zpay.sslcommerz.com/js/sweetalert.min.js"></script>
+<script src="https://zpay.sslcommerz.com/minified/js/plugins.js"></script>
+<script src="https://zpay.sslcommerz.com/js/main-animated.js"></script>
+<script>
+    $("#btnCard1").click(function () {
+        $(".preload").fadeOut(2000, function() {
+            $.ajax({
+                success: function(){
+                    $(".preload").fadeIn(4000, function () {
+                        window.location.href = "/payment/payForm";
+                    });
+                },
+                error: function(xhr, error){
+                    console.debug(xhr); console.debug(error);
+                }
+            });
+        });
+    });
+    $("#btnCard2").click(function () {
+        $(".preload").fadeOut(2000, function() {
+            $.ajax({
+                success: function(){
+                    $(".preload").fadeIn(4000, function () {
+                        window.location.href = "/payment/payForm";
+                    });
+                },
+                error: function(xhr, error){
+                    console.debug(xhr); console.debug(error);
+                }
+            });
+        });
+    });
+    $("#btnCard3").click(function () {
+        $(".preload").fadeOut(2000, function() {
+            $.ajax({
+                success: function(){
+                    $(".preload").fadeIn(4000, function () {
+                        window.location.href = "/payment/payForm";
+                    });
+                },
+                error: function(xhr, error){
+                    console.debug(xhr); console.debug(error);
+                }
+            });
+        });
+    });
+    $("#btnCard4").click(function () {
+        $(".preload").fadeOut(2000, function() {
+            $.ajax({
+                success: function(){
+                    $(".preload").fadeIn(4000, function () {
+                        window.location.href = "/payment/payForm";
+                    });
+                },
+                error: function(xhr, error){
+                    console.debug(xhr); console.debug(error);
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .preload {
+        display: none;
+        width:100px;
+        height: 100px;
+        position: fixed;
+        top: 10%;
+        left: 44%;
+    }
+</style>
+
+</body>
+</html>
+

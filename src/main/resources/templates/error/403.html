@@ -1,0 +1,25 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <title th:utext="${title}"></title>
+    <div th:replace="fragement/header"/>
+
+    <div class="main-content" align="center">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="error-container">
+                        <h1>403 - Access is denied</h1>
+
+                        <h2>Wrong Move ! Go back </h2>
+
+                        <div class="error-actions">
+                            <a th:href="@{/dashboard}" class="btn btn-large btn-primary">
+                                Back to Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <div th:replace="fragement/footer"/>
+</div>

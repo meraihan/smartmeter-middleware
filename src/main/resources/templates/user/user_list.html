@@ -1,0 +1,54 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <title>Meter List</title>
+    <div th:replace="fragement/header"/>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div th:replace="fragement/left_slide_bar :: left"/>
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="panel panel-default ticket-entry">
+                                <div class="panel-heading">
+                                    User List
+                                </div>
+
+                                <div class="panel-body">
+                                    <table class="table display table-bordered table-striped table-hover"
+                                           id="paginatedTableForMeter">
+                                        <thead>
+                                        <tr>
+                                            <th>Serial</th>
+                                            <th>Name</th>
+                                            <th>User Name</th>
+                                            <th>Role</th>
+                                            <th>Registration Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="user,iterationStatus : ${userList}">
+                                            <td th:text="${iterationStatus.count}">1</td>
+                                            <td th:text="${user.name}"></td>
+                                            <td th:text="${user.userName}"></td>
+                                            <td th:text="${user.role.id}"></td>
+                                            <td th:text="${user.registrationDate}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragement/footer"/>
+        <div th:replace="fragement/footer :: DataTableResource"/>
+    </div>
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            $('#paginatedTableForMeter').DataTable();
+        });
+    </script>
+
+</div>

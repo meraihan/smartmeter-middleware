@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-us" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Pay By Card</title>
+    <link rel="shortcut icon" type="image/png" href="https://zpay.sslcommerz.com/zpay.ico"/>
+    <meta name="description" content="The first and most secure payment gateway of Bangladesh"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta name="author" content="SSLWireless"/>
+    <link rel="stylesheet" type="text/css" href="https://zpay.sslcommerz.com/css/sweetalert.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://zpay.sslcommerz.com/minified/css/zpay.min.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" type="text/css" href="https://zpay.sslcommerz.com/minified/css/responsive.css" />
+    <script src="https://zpay.sslcommerz.com/js/modernizr.custom.js"></script>
+    <script>
+        var domain_url = "https://zpay.sslcommerz.com";
+    </script>
+
+
+    <style>
+        input {
+            -webkit-user-modify: read-write;
+        }
+        .trxid_overflow {
+            width: 140px;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            margin: 0 auto;
+        }
+        .dialog {
+            z-index: 99999 !important;
+        }
+        .small_alert button.close-newsletter{
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .small_alert.dialog .dialog-inner {
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .small_alert.dialog .dialog-inner {
+            padding: 20px 30px;
+            overflow: hidden;
+        }
+        .small_alert.dialog .dialog-inner h2 {
+            font-size: 1.8rem;
+        }
+        .small_alert.dialog .dialog-inner h2 span {
+            font-size: 2.2rem;
+        }
+        .small_alert.dialog .dialog-inner small.notice_alert {
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            padding-right: 5px;
+            position: absolute;
+            bottom: -12px;
+            right: 12px;
+        }
+        @media  screen  and (min-width: 200px) and (max-width: 600px){
+            .mobile_font_decrease {
+                margin-top: 80px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="preload"><img th:src="@{/images/15.gif}"/></div>
+<div id="loading" style="display: none !important;">
+    <div id="preloader"><span></span>  <span></span>
+    </div>
+</div>
+
+<style>
+    .nav-tabs>li {
+        width: 50% !important;
+    }
+</style>
+
+<div id="fullpage" align="center">
+    <!-- Mobile Top Nav -->
+    <div class="section" id="section0">
+        <div class="global-overlay">
+            <div class="overlay skew-part">
+                <div id="container">
+                    <div id="output" class="back-fss"></div>
+                </div>
+            </div>
+        </div>
+        <div class="intro">
+            <h4>Type your <img class="va-m " src="https://zpay.sslcommerz.com/img/cards/visaw.png" width="40" alt="Visa" title="Visa"/> or <img class="va-m" src="https://zpay.sslcommerz.com/img/cards/master-cardw.png" width="40" alt="Master Card" title="Master Card"/> information below to Pay Directly!</h4>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-lg-8 col-lg-offset-2">
+                    <div class="text-center">
+                        <div class="card-fixed">
+                            <!--<form id="contact-form">-->
+                            <div class="col-xs-12 col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" class="form form-control" placeholder="Card No"
+                                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'Card No'"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-lg-4">
+                                <div class="form-group">
+                                    <input type="text" class="form form-control"
+                                           placeholder="Expiry (MM/YY)" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Expiry (MM/YY)'" />
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-2 col-lg-2">
+                                <div class="form-group">
+                                    <input type="text" class="form form-control" placeholder="CVV"
+                                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <div class="form-group">
+                                    <input type="text" id="name" class="form form-control" placeholder="Name on card"
+                                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name on card'"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-lg-8">
+                                <div class="form-group pull-left mt-5">
+                                    <label class="switch">
+                                        <input type="checkbox"/>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <label style="padding-left: 5px">Save Card</label>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-lg-4">
+                                <div class="form-group pull-right">
+                                    <button type="submit" id="payBtn" class="btn light-btn pull-right">Pay Now</button>
+                                </div>
+                            </div>
+                            <!--</form>-->
+                            <div class="pull-right">
+                                <img src="https://zpay.sslcommerz.com/img/pci.svg" class="PCI" alt="PCI DSS Compliant" title="PCI DSS Compliant"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.is_transaction = false;
+    window.save_card_offer = "";
+</script>
+
+<script>
+    window.is_login = false;
+</script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://zpay.sslcommerz.com/plugins/creditcard/jquery.payform.js"></script>
+<script src="https://zpay.sslcommerz.com/js/sweetalert.min.js"></script>
+
+<script src="https://zpay.sslcommerz.com/minified/js/plugins.js"></script>
+<script>
+    $(document).ready(function () {
+        $.fn.editable.defaults.mode = 'inline';
+        //make editable field
+        $('#userFullName').editable();
+        $('#userEmail').editable();
+        $('#userPhone').editable();
+
+    });
+</script>
+
+
+<script>
+    // '.tbl-content' consumed little space for vertical scrollbar, scrollbar width depend on browser/os/platfrom. Here calculate the scollbar width .
+    $(window).on("load resize ", function () {
+        var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+        $('.tbl-header').css({'padding-right': scrollWidth});
+    }).resize();
+</script>
+<script src="https://zpay.sslcommerz.com/js/main-animated.js"></script>
+<script>
+    $("#payBtn").click(function () {
+        $(".preload").fadeOut(2000, function() {
+            $.ajax({
+                success: function(){
+                    $(".preload").fadeIn(4000, function () {
+                        window.location.href = "/payment/paySuccess";
+                    });
+                },
+                error: function(xhr, error){
+                    console.debug(xhr); console.debug(error);
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .preload {
+        display: none;
+        width:100px;
+        height: 100px;
+        position: fixed;
+        top: 10%;
+        left: 44%;
+    }
+</style>
+
+</body>
+</html>

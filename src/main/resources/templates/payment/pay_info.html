@@ -1,0 +1,76 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <title>Payment Info</title>
+    <div th:replace="fragement/header"/>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div th:replace="fragement/left_slide_bar :: left"/>
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="panel panel-default ticket-entry">
+                                <div class="panel-heading">
+                                    USER WISE PAYMENT STATUS
+                                </div>
+
+                                <div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <label style="font-size: 16px">Meter Holder</label>
+                                        <input type="text" style="font-weight: bold;font-size: 15px"  th:value="${UserInfo.name}" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <label style="font-size: 16px">Address</label>
+                                        <input type="text" style="font-weight: bold" th:value="${address}" class="form-control"/>
+                                    </div>
+                                </div>
+                                <br></br><br></br><br></br><br></br>
+
+                                <div class="panel-body">
+                                    <table class="table display table-bordered table-striped table-hover"
+                                           id="paginatedTableForPayment">
+                                        <thead>
+                                        <tr>
+                                            <th>Sl</th>
+                                            <th>Transaction Id</th>
+                                            <th>Month</th>
+                                            <th>Year</th>
+                                            <th>Status</th>
+                                            <th>Pay Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="payment,iterationStatus : ${paymentHistoryList}">
+                                            <td th:text="${iterationStatus.count}">1</td>
+                                            <td th:text="${payment.tranId}"></td>
+                                            <td th:text="${payment.month}"></td>
+                                            <td th:text="${payment.year}"></td>
+                                            <td th:text="${payment.status}"></td>
+                                               <td>
+                                                   <span style="color: red" th:if="${payment.status}=='PENDING'">PENDING</span>
+                                                   <span th:unless="${payment.status}"></span>
+                                               </td>
+                                            <!--<td th:unless="${payment.status}">-->
+                                                <!--<span th:text="${payment.status}"></span>-->
+                                            <!--</td>-->
+                                            <td th:text="${payment.payDate}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragement/footer"/>
+        <div th:replace="fragement/footer :: DataTableResource"/>
+    </div>
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            $('#paginatedTableForPayment').DataTable();
+        });
+    </script>
+</div>

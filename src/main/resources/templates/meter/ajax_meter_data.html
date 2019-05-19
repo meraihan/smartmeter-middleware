@@ -1,0 +1,135 @@
+<div xmlns:th="http://www.thymeleaf.org">
+
+    <div class="panel-body">
+        <div class="col-lg-12 col-md-12">
+            <div class="row action-button">
+                <div class="col-lg-6 col-md-6">
+                    <div class="thumbnail" style="width:350px; height: 350px;">
+                        <div class="page-head">
+                            <h2 class="page-head-title">Basic Information</h2>
+                        </div>
+                        <ul class="profile-info" th:each="data,iterationStatus : ${meterData}">
+                            <li>
+                                <label class="col-md-6">Holder Name</label>
+                                <span th:TEXT="${data.user.name}"></span>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-6">Address</label>
+                                <span th:TEXT="${data.user.address.house}"></span>
+                                <span th:TEXT="${data.user.address.block}"></span>
+                                <span th:TEXT="${data.user.address.road}"></span>
+                                <span th:TEXT="${data.user.address.policeStation}"></span>
+                                <span th:TEXT="${data.user.address.district}"></span>
+                                <span th:TEXT="${data.user.address.zipCode}"></span>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-6">Account Number</label>
+                                <span th:TEXT="${data.accountNo}"></span>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-6">Zone</label>
+                                <span th:TEXT="${data.user.address.zone}"></span>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-6">Connection Type</label>
+                                <span th:TEXT="${data.connectionType.typeName}"></span>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-6">Registration Date</label>
+                                <span th:TEXT="${data.registrationDate}"></span>
+                            </li>
+                            <br></br>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="thumbnail" style="width:350px; height: 350px;">
+                        <div class="page-head">
+                            <h2 class="page-head-title">Last Bill Information</h2>
+                        </div>
+                        <ul class="profile-info" th:each="bill,iterationStatus : ${billSummary}">
+                            <li>
+                                <label class="col-md-7">Last Bill Date</label>
+                                <label class=""></label>
+                                <td th:TEXT="${bill.lastBillDate}"></td>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-7">Last Meter Reading</label>
+                                <label class=""></label>
+                                <td th:TEXT="${bill.lastBillMeterReading} + ' (Units)'"></td>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-7">Last Usage Amount</label>
+                                <label class=""></label>
+                                <td th:TEXT="${bill.lastBillAmountTk} + ' (BDT)'"></td>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-7">Last Usage Unit</label>
+                                <label class=""></label>
+                                <td th:TEXT="${bill.lastBillUsageUnit} + ' (Units)'"></td>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-7">Demand Rate</label>
+                                <label class=""></label>
+                                <td th:TEXT="${bill.demandRate} + ' (BDT)'"></td>
+                            </li>
+                            <br></br>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="thumbnail" style="width:740px; height: 350px;">
+                        <div class="page-head">
+                            <h2 class="page-head-title">Current Bill Information</h2>
+                        </div>
+                        <ul class="profile-info" th:each="bill,iterationStatus : ${billSummary}">
+                            <li>
+                                <label class="col-md-7">Current Usage Unit</label>
+                                <label class=""></label>
+                                <td th:TEXT="${bill.currentUsageUnit} +' (Units)'"></td>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-7">Current Usage Amount</label>
+                                <label class=""></label>
+                                <td th:TEXT="${bill.currentUsageAmountTk} + ' (BDT)'"></td>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-7">Current Meter Reading</label>
+                                <label class=""></label>
+                                <td th:TEXT="964 + ' (Units)'"></td>
+                            </li>
+                            <br></br>
+                            <li>
+                                <label class="col-md-7">Current Per Unit Amount</label>
+                                <label class=""></label>
+                                <td th:TEXT="4.00 + ' (BDT)'"></td>
+                            </li>
+                            <br></br>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    ul {
+        list-style-type: none;
+    }
+    h2{
+        font-family:’Helvetica Bold’;
+        font-weight: bold;
+    }
+</style>

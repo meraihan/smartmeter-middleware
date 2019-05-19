@@ -1,0 +1,68 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <title>Add Meter Data</title>
+    <div th:replace="fragement/header"/>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div th:replace="fragement/left_slide_bar :: left"/>
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <span class="anchor" id="formPayment"></span>
+                            <!--<hr class="my-5">-->
+
+                            <div class="card card-outline-secondary">
+                                <div class="card-body">
+                                    <h3 class="text-center">Mobile Account</h3>
+                                    <!--</hr>-->
+                                    <!--<div class="alert alert-info p-2 pb-3">-->
+                                        <!--<a class="close font-weight-normal initialism" data-dismiss="alert" href="#"><samp>×</samp></a>-->
+                                        <!--CVC code is required.-->
+                                    <!--</div>-->
+                                    <form class="form" role="form" autocomplete="off">
+                                        <div class="form-group">
+                                            <label>Mobile Account</label>
+                                            <input type="text" class="form-control" autocomplete="off" maxlength="20" pattern="\d{16}" title="Mobile Number" required=""/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>PIN</label>
+                                            <input type="text" class="form-control" maxlength="10" title="PIN" required=""/>
+                                        </div>
+
+                                        <div class="row">
+                                            <label class="col-md-12">Amount</label>
+                                        </div>
+                                        <div class="form-inline">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" value="270.61" id="exampleInputAmount"/>
+                                            </div>  BDT
+                                        </div>
+                                        <br></br>
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <button type="reset" class="btn btn-default btn-lg btn-block">Cancel</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!--<p class="copyright" style="text-align:center;padding:40px 0;">Developed by <a href="https://uny.ro">UNY WEB DESIGN</a></p>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div th:replace="fragement/footer"/>
+    </div>
+</div>
+
+
+

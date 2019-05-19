@@ -1,0 +1,75 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Add Meter Data</title>
+<div th:replace="fragement/header"/>
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div th:replace="fragement/left_slide_bar :: left"/>
+            <div class="col-lg-9 col-md-9">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-default ticket-entry">
+                            <div class="panel-heading">
+                                Add Meter Data
+                            </div>
+                            <div th:fragment="message">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="span12">
+                                            <div th:if="${success != null}">
+                                                <div class="alert alert-success">
+                                                    <strong th:text="${success}"></strong>
+                                                </div>
+                                            </div>
+                                            <div th:if="${error != null}">
+                                                <div class="alert alert-danger">
+                                                    <strong th:text="${error}"></strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form th:action="@{/meter/add}" th:method="POST" modelAttribute="add" commandName="add">
+                                    <div class="form-group">
+                                        <label>User Full Name</label>
+                                        <select class="form-control" name="meter.user.id" id="meterModelNum"
+                                                onchange="onChangeMeterDataLoad()">
+                                            <option value=""> --SELECT-- </option>
+                                            <option th:each="user : ${userList}" th:value="${user.id}"
+                                                    th:utext="${user.name}"/>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Connection Type</label>
+                                        <select class="form-control" name="meter.connectionType.id">
+                                            <div>
+                                                <option value="1">HOUSEHOLD</option>
+                                                <option value="2">COMMERCIAL</option>
+                                                <option value="3">INDUSTRY</option>
+                                            </div>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Meter Number</label>
+                                        <input type="text" name="meterNo" placeholder="Meter Number" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Account Number</label>
+                                        <input type="text" name="accountNo" placeholder="Account Number" class="form-control"/>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragement/footer"/>
+</div>
+</div>

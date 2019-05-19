@@ -1,0 +1,54 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <title>Search Meter</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/font-awesome.min.css}"/>
+    <div th:replace="fragement/header"/>
+    <!-- Content Section START -->
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div th:replace="fragement/left_slide_bar :: left"/>
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="panel panel-default ticket-entry">
+                                <div class="panel-heading">
+                                    Search by Meter number
+                                    <span>Please Enter Meter Number</span>
+                                </div>
+
+                                <div class="container">
+                                <span sec:authorize-expr="hasAnyAuthority('ADMIN', 'SUPERADMIN')">
+
+                                <form class="example">
+                                    <input type="text" id="meterModelNums" placeholder="Search.."/>
+                                    <button id="btnSearch" type="submit" th:text="Search"><i class="fa fa-search"></i></button>
+                                </form>
+                                </span>
+                                    <span sec:authorize-expr="hasAuthority('USER')">
+                                <div class="form-inline">
+                                    <label class="">Meter Number</label>
+                                    <select class="form-control" name="meter.meterNo" id="meterModelNum"
+                                            onchange="onChangeMeterDataLoad()" style="width: 300px">
+                                        <option value=""> ---SELECT METER NUMBER--- </option>
+                                        <option th:each="meter : ${meterList}" th:value="${meter.meterNo}"
+                                                th:utext="${meter.connectionType.typeName} +' --> '+  ${meter.meterNo}"/>
+                                    </select>
+                                </div>
+                                </span>
+                                </div>
+                                <br></br>
+
+                                <div id="meterDatas">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div th:replace="fragement/footer"/>
+    </div>
+</div>

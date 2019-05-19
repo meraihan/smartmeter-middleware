@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+    <title>Editable Invoice</title>
+
+    <link rel='stylesheet' type='text/css' th:href="@{/css/invoice/style.css}" />
+    <link rel='stylesheet' type='text/css' th:href="@{/css/invoice/print.css}" media="print" />
+    <script th:src="@{/js/jquery-2.0.2.js}"></script>
+    <script th:src="@{/js/example.js}"></script>
+
+</head>
+
+<body>
+<!--<img th:src="@{/images/loader.gif}" id="img" style="display:none"/>-->
+<div class="preload"><img th:src="@{/images/6.gif}"/></div>
+<div id="page-wrap">
+
+    <textarea id="header">Electricity Bill</textarea>
+
+    <div id="logo">
+        <img id="image" src="/images/DS-logo.png" alt="logo" />
+    </div>
+
+    <div id="identity">
+        <textarea id="address">66/K1, West Raza Bazar, Tejgaon, Dhaka-1207 Phone: (+880) 1722680407</textarea>
+    </div>
+    <div style="clear:both"></div>
+    <div id="customer">
+        <textarea id="customer-title">Sayed Mahmud Raihan</textarea>
+        <table id="meta">
+            <tr>
+                <td class="meta-head">Invoice #</td>
+                <td><textarea>000123</textarea></td>
+            </tr>
+            <tr>
+
+                <td class="meta-head">Date</td>
+                <td><textarea id="date">December 15, 2009</textarea></td>
+            </tr>
+            <tr>
+                <td class="meta-head">Amount Due</td>
+                <td><div class="due">BDT 875.00</div></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <table id="items">
+        <tr>
+            <th>CUSTOMER NO</th>
+            <th>CURRENT CHARGES</th>
+            <th>TAKA</th>
+            <th>ADJUSTMENT/ARREAR</th>
+            <th>TAKA</th>
+        </tr>
+
+        <tr class="item-row">
+            <td class="item-name"><div class="delete-wpr"><textarea>27507420</textarea></div></td>
+            <td class="item-name"><div class="delete-wpr"><textarea>ELECTRICITY CHARGE</textarea></div></td>
+            <td class="description"><textarea>231.80</textarea></td>
+            <td><textarea class="cost">ADJ. PRINCIPAL</textarea></td>
+            <td><span class="price">0.77</span></td>
+        </tr>
+
+        <tr class="item-row">
+            <td class="item-name"><div class="delete-wpr"><textarea>27507420</textarea></div></td>
+            <td class="item-name"><div class="delete-wpr"><textarea>DEMAND CHARGE</textarea></div></td>
+            <td class="description"><textarea>30.00</textarea></td>
+            <td><textarea class="cost">ADJ. L.P.S</textarea></td>
+            <td><span class="price">0.00</span></td>
+        </tr>
+        <tr class="item-row">
+            <td class="item-name"><div class="delete-wpr"><textarea>27507420</textarea></div></td>
+            <td class="item-name"><div class="delete-wpr"><textarea>SERVICE CHARGE</textarea></div></td>
+            <td class="description"><textarea>10.00</textarea></td>
+            <td><textarea class="cost">CURR. AMP ARR. L.P.S</textarea></td>
+            <td><span class="price">-1.16</span></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="blank"> </td>
+            <td colspan="2" class="total-line">Subtotal</td>
+            <td class="total-value"><div id="subtotal">BDT 270.61</div></td>
+        </tr>
+        <tr>
+
+            <td colspan="2" class="blank"> </td>
+            <td colspan="2" class="total-line">Total</td>
+            <td class="total-value"><div id="total">BDT 270.61</div></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="blank"> </td>
+            <td colspan="2" class="total-line">Amount Paid</td>
+
+            <td class="total-value"><textarea id="paid">BDT 0.00</textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="blank"> </td>
+            <td colspan="2" class="total-line balance">Balance Due</td>
+            <td class="total-value balance"><div class="due">BDT 270.61</div></td>
+        </tr>
+    </table>
+
+    <div id="terms">
+        <h5>Terms</h5>
+        <textarea>NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</textarea>
+    </div>
+    <br></br>
+    <button type="submit" id="btnPayForm" class="btn btn-lg btn-primary" style="float: right;">Pay Bill</button>
+
+</div>
+
+</body>
+<script>
+    $("#btnPayForm").click(function () {
+        $(".preload").fadeOut(2000, function() {
+            $.ajax({
+                success: function(){
+                    $(".preload").fadeIn(4000, function () {
+                        window.location.href = "/payment/paymentMethod";
+                    });
+                },
+                error: function(xhr, error){
+                    console.debug(xhr); console.debug(error);
+                }
+            });
+        });
+    });
+    $("#page-wrap").fadeIn(2000);
+    $(".preload").fadeOut(3000);
+</script>
+
+<style>
+    #page-wrap {
+        display:none;
+    }
+    .preload { width:100px;
+        height: 100px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+    }
+</style>
+</html>

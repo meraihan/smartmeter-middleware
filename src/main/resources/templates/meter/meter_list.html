@@ -1,0 +1,69 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/xhtml">
+<title>Meter List</title>
+<div th:replace="fragement/header"/>
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div th:replace="fragement/left_slide_bar :: left"/>
+            <div class="col-lg-9 col-md-9">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-default ticket-entry">
+                            <div class="panel-heading">
+                                User Wise Meter List
+                            </div>
+
+                            <div class="panel-body">
+                                <table class="table display table-bordered table-striped table-hover"
+                                       id="paginatedTableForMeter">
+                                    <thead>
+                                    <tr>
+                                        <th>Sl</th>
+                                        <th>User</th>
+                                        <th>Connection Type</th>
+                                        <th>Meter No</th>
+                                        <th>Account Number</th>
+                                        <th>Registration Date</th>
+                                        <!--<th sec:authorize-expr="hasAuthority('SUPERADMIN')">Status</th>-->
+                                        <th sec:authorize-expr="hasAnyAuthority('SUPERADMIN', 'ADMIN')">Action</th>
+                                        <th sec:authorize-expr="hasAnyAuthority('SUPERADMIN', 'ADMIN')">Payment</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="meter,iterationStatus : ${meterList}">
+                                        <td th:text="${iterationStatus.count}">1</td>
+                                        <td th:text="${meter.user.userName}"></td>
+                                        <td th:text="${meter.connectionType.typeName}"></td>
+                                        <td th:text="${meter.meterNo}"></td>
+                                        <td th:text="${meter.accountNo}"></td>
+                                        <td th:text="${meter.registrationDate}"></td>
+                                        <!--<td th:text="${meter.status}"></td>-->
+                                        <td class="center">&nbsp;&nbsp;&nbsp;
+                                            <a th:href="@{/meter/edit(id=${meter.id})}"><i
+                                                    class="glyphicon-edit"></i></a>
+                                        </td>
+                                        <td class="center">&nbsp;&nbsp;&nbsp;
+                                            <a th:href="@{/payment/paymentInfo(id=${meter.id})}"><i
+                                                    class="glyphicon-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragement/footer"/>
+    <div th:replace="fragement/footer :: DataTableResource"/>
+</div>
+<script th:inline="javascript">
+    $(document).ready(function() {
+        $('#paginatedTableForMeter').DataTable();
+    });
+</script>
+
+</div>

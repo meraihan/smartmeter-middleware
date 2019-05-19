@@ -1,0 +1,96 @@
+<div lang="en" xmlns:th="http://www.thymeleaf.org">
+    <title>Add Meter Data</title>
+    <div th:replace="fragement/header"/>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div th:replace="fragement/left_slide_bar :: left"/>
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="panel panel-default ticket-entry">
+                                <div class="panel-heading">
+                                    Add Meter Data
+                                </div>
+                                <div th:fragment="message">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="span12">
+                                                <div th:if="${success != null}">
+                                                    <div class="alert alert-success">
+                                                        <strong th:text="${success}"></strong>
+                                                    </div>
+                                                </div>
+                                                <div th:if="${error != null}">
+                                                    <div class="alert alert-danger">
+                                                        <strong th:text="${error}"></strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <form th:action="@{/meter/edit}" th:method="post">
+
+                                        <input type="hidden" name="id" th:value="${meter.id}"/>
+
+                                        <div class="form-group">
+                                            <label>User Full Name</label>
+                                            <!--<select class="form-control" name="meter.user.id">-->
+                                                <!--&lt;!&ndash;<option value=""> &#45;&#45;SELECT&#45;&#45; </option>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<option th:each="user : ${userList}" th:value="${user.id}"&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;th:utext="${user.name}"/>&ndash;&gt;-->
+                                                <!--<option th:field="${user.name}"></option>-->
+                                            <!--</select>-->
+                                            <!--<input type="text" class="form-control" th:value="${userName}" />-->
+                                            <input type="text" name="user.id" class="form-control" required="true"
+                                                   disabled="disabled"
+                                                   th:value="${userName}"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Connection Type</label>
+                                            <select class="form-control" name="connectionType.id">
+                                                <div>
+                                                    <option disabled="true" value="">--Select--</option>
+                                                    <option th:field="${meterData.connectionType.id}" value="1">HOUSEHOLD</option>
+                                                    <option th:field="${meterData.connectionType.id}" value="2">COMMERCIAL</option>
+                                                    <option th:field="${meterData.connectionType.id}" value="3">INDUSTRY</option>
+                                                </div>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Meter Number</label>
+                                            <input type="text" name="meterNo" th:value="${meterData.meterNo}"
+                                                   placeholder="Meter Number" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Account Number</label>
+                                            <input type="text" name="accountNo" th:value="${meterData.accountNo}"
+                                                   placeholder="Account Number" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select class="form-control" name="status">
+                                                <div>
+                                                    <option disabled="true" value="">--Select--</option>
+                                                    <option value="PENDING">PENDING</option>
+                                                    <option value="APPROVED">APPROVED</option>
+                                                    <option value="REJECT">REJECT</option>
+                                                </div>
+                                            </select>
+
+                                        </div>
+                                        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragement/footer"/>
+    </div>
+</div>

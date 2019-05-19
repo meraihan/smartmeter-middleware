@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="left">
+    <div class="col-lg-3 col-md-3">
+        <div class="mobile-menu-left-overlay"></div>
+        <nav class="side-menu">
+            <ul>
+                <li>
+                    <a th:href="@{/dashboard}" class="active">
+                        <i class="icon-home"></i> Home
+                    </a>
+                </li>
+                <li class="title">Meter</li>
+                <li>
+                    <a th:href="@{/meter/search}">
+                        <i class="icon-tickets"></i> Search
+                    </a>
+                </li>
+                <li sec:authorize-expr="hasAnyAuthority('SUPERADMIN', 'ADMIN')">
+                    <a th:href="@{/meter/add}">
+                        <i class="icon-passport"></i> Add Meter
+                    </a>
+                </li>
+                <li sec:authorize-expr="hasAnyAuthority('SUPERADMIN', 'ADMIN')">
+                    <a th:href="@{/meter/list}">
+                        <i class="icon-passport"></i> Meter List
+                    </a>
+                </li>
+                <li sec:authorize-expr="hasAnyAuthority('SUPERADMIN', 'ADMIN')">
+                    <a href="">
+                        <i class="icon-book-pencil"></i> Others
+                    </a>
+                </li>
+                <li class="divider" sec:authorize-expr="hasAuthority('USER')"></li>
+
+                <li class="title" sec:authorize-expr="hasAuthority('USER')">Usage</li>
+                <li sec:authorize-expr="hasAuthority('USER')">
+                    <a th:href="@{/payment/payBill}">
+                        <i class="icon-credit-card"></i> Pay Bill
+                    </a>
+                </li>
+                <li class="divider" sec:authorize-expr="hasAnyAuthority('ADMIN', 'SUPERADMIN')"></li>
+
+                <li class="title" sec:authorize-expr="hasAnyAuthority('ADMIN', 'SUPERADMIN')">User</li>
+                <li sec:authorize-expr="hasAnyAuthority('ADMIN', 'SUPERADMIN')">
+                    <a th:href="@{/user/add}">
+                        <i class="icon-credit-card"></i>Add
+                    </a>
+                </li>
+                <li sec:authorize-expr="hasAnyAuthority('SUPERADMIN', 'ADMIN')">
+                    <a th:href="@{/user/list}">
+                        <i class="icon-credit-card"></i>List
+                    </a>
+                </li>
+                <li class="divider"></li>
+
+                <li class="title">REPORT</li>
+                <li>
+                    <a href="">
+                        <i class="icon-task"></i> Summary
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="icon-report"></i> Details Report
+                    </a>
+                </li>
+                <li class="divider"></li>
+
+                <li class="title">Details</li>
+                <li>
+                    <a href="">
+                        <i class="icon-plus"></i> Add New
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="icon-cogs"></i> Manage
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a th:href="@{/logout}">
+                        <i class="icon-sign-out"></i> Sign Out
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div>
+
+</body>
+</html>
